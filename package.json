@@ -1,0 +1,23 @@
+{
+  "name": "metalsmith-json-metadata",
+  "version": "0.0.0-development",
+  "main": "lib/index.js",
+  "repository": "https://github.com/hbsnow/metalsmith-json-metadata.git",
+  "author": "hbsnow <yuki.4uing@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "mocha --reporter spec",
+    "debug": "cross-env NODE_DEBUG=metalsmith-json-metadata mocha --reporter spec",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+  },
+  "devDependencies": {
+    "assert": "^1.4.1",
+    "cross-env": "^5.0.5",
+    "metalsmith": "^2.3.0",
+    "mocha": "^3.5.0",
+    "semantic-release": "^7.0.2"
+  },
+  "dependencies": {
+    "load-json-file": "^3.0.0"
+  }
+}
