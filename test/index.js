@@ -35,14 +35,11 @@ describe('metalsmith-json-metadata', function () {
         if (err) return done(err)
 
         const keys = Object.keys(files)
-        assert.equal(keys.length, 3)
+        assert.equal(keys.length, 2)
         keys.forEach(function (file) {
           switch (files[file].title) {
             case 'one':
               assert.deepEqual(files[file].data, { one: 'test' })
-              break
-            case 'two':
-              assert.deepEqual(files[file].hasOwnProperty('data'), false)
               break
           }
         })
