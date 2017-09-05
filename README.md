@@ -4,11 +4,10 @@
 
 Metalsmith plugin that add metadata by jsonfile.
 
-
 ## Install
 
 ```
-npm install metalsmith-json-metadata
+npm i metalsmith-json-metadata
 ```
 
 ## Usage
@@ -28,17 +27,10 @@ Metalsmith(__dirname)
 
 ```
 ---
-jsonMetadata: ['data.json']
+jsonMetadata: ['one.json', 'two.json']
 ---
 <p>Hello, world!</p>
 ```
-
-## Options
-
-| name      | description           | default        |
-|-----------|-----------------------|----------------|
-| `files`   | all files load        | `[]`           |
-| `keyname` | front-matter key name | `jsonMetadata` |
 
 ## License
 

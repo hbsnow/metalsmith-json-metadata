@@ -25,34 +25,10 @@ describe('metalsmith-json-metadata', function () {
       })
   })
 
-  it('すべてのファイルのメタデータにjsonのデータを追加する', function (done) {
-    var metalsmith = Metalsmith('test/fixtures/files')
-    metalsmith
-      .use(jsonMetadata({
-        files: 'data.json'
-      }))
-      .build(function (err, files) {
-        if (err) return done(err)
-
-        const keys = Object.keys(files)
-        assert.equal(keys.length, 2)
-        keys.forEach(function (file) {
-          switch (files[file].title) {
-            case 'one':
-              assert.deepEqual(files[file].data, { one: 'test' })
-              break
-          }
-        })
-        done()
-      })
-  })
-
   it('jsonのデータを複数追加する', function (done) {
     var metalsmith = Metalsmith('test/fixtures/multi')
     metalsmith
-      .use(jsonMetadata({
-        files: 'three.json'
-      }))
+      .use(jsonMetadata())
       .build(function (err, files) {
         if (err) return done(err)
 
