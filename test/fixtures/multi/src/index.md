@@ -1,6 +1,8 @@
 ---
-title: index
-jsonMetadata: ['one.json', 'two.json', 'three.json']
+jsonMetadata: 
+  - one.json
+  - two.json
+  - three.json
 ---
 
 one

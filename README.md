@@ -32,6 +32,12 @@ jsonMetadata: ['one.json', 'two.json']
 <p>Hello, world!</p>
 ```
 
+## Options
+
+| name   | description      | default |
+|--------|------------------|---------|
+| except | except json used | true    |
+
 ## License
 
 MIT
