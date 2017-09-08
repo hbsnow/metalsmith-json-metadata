@@ -3,7 +3,6 @@ var path = require('path')
 var Metalsmith = require('metalsmith')
 var jsonMetadata = require('..')
 
-
 describe('metalsmith-json-metadata', function () {
   it('メタデータからjsonのデータを追加する', function (done) {
     var metalsmith = Metalsmith('test/fixtures/basic')
@@ -15,11 +14,7 @@ describe('metalsmith-json-metadata', function () {
         const keys = Object.keys(files)
         assert.equal(keys.length, 2)
         keys.forEach(function (file) {
-          switch (files[file].title) {
-            case 'index':
-              assert.deepEqual(files[file].data, { one: 'test' })
-              break
-          }
+          assert.deepEqual(files[file].data, { data: 'test' })
         })
         done()
       })
@@ -33,15 +28,11 @@ describe('metalsmith-json-metadata', function () {
         if (err) return done(err)
 
         const keys = Object.keys(files)
-        assert.equal(keys.length, 4)
+        assert.equal(keys.length, 1)
         keys.forEach(function (file) {
-          switch (files[file].title) {
-            case 'index':
-              assert.deepEqual(files[file].one, { one: 'test' })
-              assert.deepEqual(files[file].two, { two: 'test' })
-              assert.deepEqual(files[file].three, { three: 'test' })
-              break
-          }
+          assert.deepEqual(files[file].one, { one: 'test' })
+          assert.deepEqual(files[file].two, { two: 'test' })
+          assert.deepEqual(files[file].three, { three: 'test' })
         })
         done()
       })
@@ -55,11 +46,29 @@ describe('metalsmith-json-metadata', function () {
         if (err) return done(err)
 
         const keys = Object.keys(files)
-        assert.equal(keys.length, 2)
+        assert.equal(keys.length, 1)
+        keys.forEach(function (file) {
+          assert.deepEqual(files[file].data, { one: 'test' })
+        })
+        done()
+      })
+  })
+
+  it('使用したjsonのデータをノードから除外しない', function (done) {
+    var metalsmith = Metalsmith('test/fixtures/no-except')
+    metalsmith
+      .use(jsonMetadata({
+        except: false
+      }))
+      .build(function (err, files) {
+        if (err) return done(err)
+
+        const keys = Object.keys(files)
+        assert.equal(keys.length, 3)
         keys.forEach(function (file) {
           switch (files[file].title) {
-            case 'index':
-              assert.deepEqual(files[file].data, { one: 'test' })
+            case 'no-except':
+              assert.deepEqual(files[file].one, { one: 'test' })
               break
           }
         })
